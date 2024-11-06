@@ -1,0 +1,12 @@
+services:
+  meshsense:
+    build: .
+    ports:
+      - "5921:5921"
+      - "5920:5920"
+    environment:
+      - PORT=5921
+      - DEV_UI_URL=http://localhost:5921
+    # Optional: if you want to see the logs more clearly
+    tty: true
+    stdin_open: true
