@@ -1,6 +1,6 @@
 ## Install
 
-https://github.com/youroldmangaming/MeshSense.git
+git clone https://github.com/youroldmangaming/MeshSense.git
 
 cd MeshSense
 
