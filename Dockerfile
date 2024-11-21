@@ -1,26 +1,37 @@
-FROM node:23.1.0
+FROM node:18-slim
 
-# Install dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libfuse2 \
     curl \
     ca-certificates \
     git \
+    libdbus-1-3 \
+    dbus \
     && rm -rf /var/lib/apt/lists/*
 
-# Create app directory
-WORKDIR /app
+# Create DBus system directory and configure
+RUN mkdir -p /var/run/dbus \
+    && dbus-uuidgen > /var/lib/dbus/machine-id
 
-# Clone the MeshSense repository
+# Create app directory and clone repository
+WORKDIR /app
 RUN git clone https://github.com/Affirmatech/MeshSense.git
+WORKDIR /app/MeshSense
 
 # Install dependencies
-WORKDIR /app/MeshSense
-RUN ./update.mjs
+RUN echo "Installing UI dependencies..." && \
+    cd ui && npm install --legacy-peer-deps && cd .. && \
+    echo "Installing API dependencies..." && \
+    cd api && npm install --legacy-peer-deps && cd ..
 
-# Copy the startup script
+# Expose ports
+EXPOSE 5920 5921
+
+# Start script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Set the entry point to our startup script
-CMD ["/start.sh"]
+# Start DBus and the application
+ENTRYPOINT ["/bin/bash", "-c", "dbus-daemon --system --fork && /start.sh"]
+
