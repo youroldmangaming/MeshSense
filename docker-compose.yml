@@ -10,3 +10,8 @@ services:
     # Optional: if you want to see the logs more clearly
     tty: true
     stdin_open: true
+
+
+
+
+
