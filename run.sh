@@ -1,2 +1,1 @@
-chmod 777 start.sh
-docker compose up --build
+docker run -d --name meshsense -p 5920:5920 -p 5921:5921 --privileged meshsense:latest
