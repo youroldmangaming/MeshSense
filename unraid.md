@@ -8,7 +8,7 @@ To import a Docker container into Unraid, follow these steps:
    First, if you haven't already, run your Docker container using the `docker run` command. For example:
    
     ```bash
-  docker run -d --name meshsense -p 5921:5921 -p 5920:5920 -e PORT=5921 -e DEV_UI_URL="http://localhost:5921" -e ACCESS_KEY="noSecrets" --tty  --interactive  --privileged y0mg/meshsense
+    docker run -d --name meshsense -p 5921:5921 -p 5920:5920 -e PORT=5921 -e DEV_UI_URL="http://localhost:5921" -e ACCESS_KEY="noSecrets" --tty  --interactive  --privileged y0mg/meshsense
     
 Commit the Running Container: Save the current state of the container as a new image:
 
