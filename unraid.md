@@ -67,7 +67,7 @@ Click "Apply" to create and start the container.
 
 
 
-##Summary
+## Summary
 Run your Docker container and commit it to create a new image.
 
 Save the image as a tar file and transfer it to Unraid.
