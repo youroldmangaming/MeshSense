@@ -1,0 +1,66 @@
+diff --git a/api/package.json b/api/package.json
+index b655530..9de3cf2 100644
+--- a/api/package.json
++++ b/api/package.json
+@@ -52,7 +52,6 @@
+     "serialport": "^12.0.0",
+     "ste-simple-events": "^3.0.11",
+     "tslog": "^4.9.3",
+-    "webbluetooth": "^3.2.1",
+     "ws": "^8.18.0",
+     "x11": "^2.3.0"
+   }
+diff --git a/api/src/meshtastic.ts b/api/src/meshtastic.ts
+index b41aac3..91d042d 100644
+--- a/api/src/meshtastic.ts
++++ b/api/src/meshtastic.ts
+@@ -28,7 +28,7 @@ import {
+   tracerouteRateLimit,
+   version
+ } from './vars'
+-import { beginScanning, bluetoothDevices, stopScanning } from './lib/bluetooth'
++// import { beginScanning, bluetoothDevices, stopScanning } from './lib/bluetooth'
+ import exitHook from 'exit-hook'
+ import * as geolib from 'geolib'
+ import axios from 'axios'
+@@ -80,8 +80,10 @@ packets.subscribe(() => {
+ 
+ connectionStatus.subscribe((value) => {
+   if (value == 'disconnected' || value == 'searching' || value == 'reconnecting') {
+-    beginScanning()
+-  } else stopScanning()
++    // beginScanning()
++  } else {
++    //stopScanning()
++  }
+ 
+   if (value == 'connected') uploadMyNode()
+ })
+diff --git a/ui/package-lock.json b/ui/package-lock.json
+index e980864..c444bc6 100644
+--- a/ui/package-lock.json
++++ b/ui/package-lock.json
+@@ -42,12 +42,14 @@
+         "eventemitter3": "^5.0.1",
+         "exit-hook": "^4.0.0",
+         "express": "^4.21.1",
++        "geolib": "^3.3.4",
+         "get-port": "^7.1.0",
+         "http-proxy-middleware": "^3.0.3",
+         "intercept-stdout": "^0.1.2",
+         "key-file-storage": "^2.3.3",
+         "node-ble": "^1.11.0",
+         "pem": "^1.14.8",
++        "serialport": "^12.0.0",
+         "ste-simple-events": "^3.0.11",
+         "tslog": "^4.9.3",
+         "webbluetooth": "^3.2.1",
+@@ -63,7 +65,7 @@
+         "@rollup/plugin-typescript": "^12.1.1",
+         "@types/axios": "^0.14.0",
+         "@types/dotenv": "^8.2.0",
+-        "@types/express": "^5.0.0",
++        "@types/express": "^4.0.0",
+         "@types/node": "^22.7.8",
+         "@types/pem": "^1.14.4",
+         "@types/ws": "^8.5.12",
