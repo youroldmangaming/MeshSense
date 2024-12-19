@@ -1,3 +1,8 @@
+![image](https://github.com/user-attachments/assets/8bd906b3-e949-4638-bffa-80ca4c7530de)
+
+19Dec
+Updated and debugged fixed a couple of issues. Seems to be running now.
+
 ##22Nov24
 The container is now running with the following improvements:
 
