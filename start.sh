@@ -1,5 +1,9 @@
 #!/bin/bash
 
+rm -f /run/dbus/pid  # Remove the PID file if it exists
+dbus-daemon --system --fork
+
+
 # Set environment variables
 export PORT=5921
 export DEV_API_URL=http://localhost:5920
@@ -13,8 +17,16 @@ PORT=5921 npm run dev &
 # Start API service
 echo "Starting API service..."
 cd /app/MeshSense/api
-ACCESS_KEY=${ACCESS_KEY} PORT=5920 npm run dev & &
+ACCESS_KEY=${ACCESS_KEY} PORT=5920 npm run dev &
 
 # Keep container running
 wait
+
+
+
+
+
+
+
+
 
