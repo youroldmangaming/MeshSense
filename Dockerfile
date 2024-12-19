@@ -32,6 +32,10 @@ EXPOSE 5920 5921
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+COPY no-bluetooth.patch /no-bluetooth.patch
+RUN git apply /no-bluetooth.patch
+
+ENV ACCESS_KEY=NoSecrets
+
 # Start DBus and the application
 ENTRYPOINT ["/bin/bash", "-c", "dbus-daemon --system --fork && /start.sh"]
-
