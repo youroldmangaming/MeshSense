@@ -42,5 +42,5 @@ COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 
-
+ENTRYPOINT ["/bin/bash", "-c", "dbus-daemon --system --fork && /start.sh"]
 # Start DBus and the application
