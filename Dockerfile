@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     git \
     libdbus-1-3 \
     dbus \
+    g++ \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Create DBus system directory and configure
@@ -19,6 +21,12 @@ WORKDIR /app
 RUN git clone https://github.com/Affirmatech/MeshSense.git
 WORKDIR /app/MeshSense
 
+COPY removeBt.patch /removeBt.patch
+RUN git apply /removeBt.patch
+
+
+
+
 # Install dependencies
 RUN echo "Installing UI dependencies..." && \
     cd ui && npm install --legacy-peer-deps && cd .. && \
@@ -27,15 +35,12 @@ RUN echo "Installing UI dependencies..." && \
 
 # Expose ports
 EXPOSE 5920 5921
+ENV ACCESS_KEY=NoSecrets
 
 # Start script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-COPY removeBt.patch /removeBt.patch
-RUN git apply /removeBt.patch
 
-ENV ACCESS_KEY=NoSecrets
 
 # Start DBus and the application
-ENTRYPOINT ["/bin/bash", "-c", "dbus-daemon --system --fork && /start.sh"]
