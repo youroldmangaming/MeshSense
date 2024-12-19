@@ -6,7 +6,7 @@ services:
       - "5920:5920"
     environment:
       - PORT=5921
-      - DEV_UI_URL="http://localhost:5921"y
+      - DEV_UI_URL="http://localhost:5921"
       - ACCESS_KEY="noSecrets"
     tty: true
     stdin_open: true
