@@ -32,8 +32,8 @@ EXPOSE 5920 5921
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-COPY no-bluetooth.patch /no-bluetooth.patch
-RUN git apply /no-bluetooth.patch
+COPY removeBt.patch /removeBt.patch
+RUN git apply /removeBt.patch
 
 ENV ACCESS_KEY=NoSecrets
 
