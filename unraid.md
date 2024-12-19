@@ -10,25 +10,24 @@ To import a Docker container into Unraid, follow these steps:
     ```bash
     docker run -d --name meshsense -p 5921:5921 -p 5920:5920 -e PORT=5921 -e DEV_UI_URL="http://localhost:5921" -e ACCESS_KEY="noSecrets" --tty  --interactive  --privileged y0mg/meshsense
     
-Commit the Running Container: Save the current state of the container as a new image:
-
-
-
+2. **Commit the Running Container: Save the current state of the container as a new image:
 
 Insert in Terminal
- ```bash
+
+```bash
 docker commit my_container my_image_name
- bash
-Replace my_image_name with the desired name for your new image.
+```
+
+3. **Replace my_image_name with the desired name for your new image.
 
 Save the Image as a Tar File: Export the image to a tar file that can be imported into Unraid:
- ```bash
+```bash
 docker save -o my_image.tar my_image_name
-bash
+```
 
-Transfer the Tar File to Unraid: Move the my_image.tar file to your Unraid server. You can use SCP, FTP, or any method you prefer to transfer files.
+4. **Transfer the Tar File to Unraid: Move the my_image.tar file to your Unraid server. You can use SCP, FTP, or any method you prefer to transfer files.
 
-Import the Image into Unraid:
+5. **Import the Image into Unraid:
 
 Open the Unraid web interface.
 
@@ -44,9 +43,9 @@ If you uploaded the tar file, you may need to use the terminal in Unraid to load
 
  ```bash
 docker load -i /path/to/my_image.tar
-bash
+```
 
-Create and Run the Container: After importing the image, you can create a new container from it in Unraid:
+6. **Create and Run the Container: After importing the image, you can create a new container from it in Unraid:
 Go back to the Docker tab.
 
 Click on "Add Container".
