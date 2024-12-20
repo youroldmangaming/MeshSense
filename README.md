@@ -9,7 +9,7 @@ docker run --rm  -v ./data:/root/.local/share/meshsense/ -v ./dbus/:/var/run/dbu
 
 
 
-docker run --rm -v ./data:/root/.local/share/meshsense/ -v ./dbus/:/var/run/dbus/system_bus_socket:ro -p 5920:5920 y0mg/meshsense:amd64
+docker run --rm -v ./data:/root/.local/share/meshsense/ -v ./dbus/:/var/run/dbus/system_bus_socket:ro -p 5920:5920 y0mg/meshsense:arm64
 
 
 Runs.
