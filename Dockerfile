@@ -18,7 +18,9 @@ RUN mkdir -p /var/run/dbus \
 
 # Create app directory and clone repository
 WORKDIR /app
-RUN git clone https://github.com/Affirmatech/MeshSense.git
+RUN git clone https://github.com/Affirmatech/MeshSense.git .
+
+
 WORKDIR /app/MeshSense
 
 COPY removeBt.patch /removeBt.patch
