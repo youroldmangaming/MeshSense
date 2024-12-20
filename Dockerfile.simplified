@@ -6,6 +6,9 @@ WORKDIR /app
 
 RUN git clone https://github.com/Affirmatech/MeshSense.git .
 
+COPY removeBt.patch /removeBt.patch
+RUN git apply /removeBt.patch
+
 WORKDIR /app/api
 RUN npm install
 RUN npm run build
