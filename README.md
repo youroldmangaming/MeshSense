@@ -1,4 +1,17 @@
+20Dec24
+
 ![image](https://github.com/user-attachments/assets/8bd906b3-e949-4638-bffa-80ca4c7530de)
+
+Just use the simplefied documents they all work.
+
+docker run --rm  -v ./data:/root/.local/share/meshsense/ -v ./dbus/:/var/run/dbus/system_bus_socket:ro -p 5920:5920  y0mg/meshsense:amd64
+
+Runs.
+
+Will get the arm version working soon.
+
+BT I will fix as I have it working in a older copy.
+
 
 19Dec
 Updated and debugged fixed a couple of issues. Seems to be running now.
