@@ -68,5 +68,6 @@ http://<HOST IP>:5921
 
 ![image](https://github.com/user-attachments/assets/a77a208c-0ada-4795-92b9-9f8cd65c5e69)
 
-
+11Mar25
+Note the ACCESS_KEY can be set by the environmetal variable in the docker-compose.yml.  [ - ACCESS_KEY="noSecrets"]  Set this to something that is appropriate to yoruself.
 
